@@ -2,13 +2,10 @@
 {% block title%} Home {% endblock %}
 {% block body %}
 
-    {% for pizza in pizzas %}
-        {{ pizza.naam }} <br>
-    {% endfor %}
-    <br><br>
     {% for klant in klanten %}
-        {{ klant.naam }} <br>
+        {% for bestelling in klant.getBestellingen   %}
+            {{ bestelling.datum|date("Y-m-d") }} <br>
+        {% endfor %}
     {% endfor %}
-
 
 {% endblock %}
