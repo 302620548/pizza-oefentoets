@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title%} Home {% endblock %}
+{% block body %}
+
+    {% for pizza in pizzas %}
+        {{ pizza.naam }} <br>
+    {% endfor %}
+    <br><br>
+    {% for klant in klanten %}
+        {{ klant.naam }} <br>
+    {% endfor %}
+
+
+{% endblock %}
