@@ -1,11 +1,23 @@
 {% extends 'base.html.twig' %}
-{% block title%} Home {% endblock %}
+{% block title %} Home {% endblock %}
 {% block body %}
 
-    {% for klant in klanten %}
-        {% for bestelling in klant.getBestellingen   %}
-            {{ bestelling.datum|date("Y-m-d") }} <br>
-        {% endfor %}
-    {% endfor %}
+    <div class="row">
+        <div class="col-md-4">
+            {% for klant in klanten %}
+                <h3>{{ klant.naam }}</h3>
+                {% for bestelling in klant.getBestellingen %}
+                    {{ bestelling.datum|date("Y-m-d") }} <br>
+                    {% for bestelregel in bestelling.getBestelregels %}
+                        {{ bestelregel.aantal }}
+                        {{ bestelregel.getPizzaId.naam }}
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+
+
+
 
 {% endblock %}
